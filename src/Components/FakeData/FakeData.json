@@ -1,0 +1,17 @@
+[{
+    "id": 1,
+    "select_car": "Bike",
+    "img": "https://i.ibb.co/6YBfkKw/Frame.png"
+  }, {
+    "id": 2,
+    "select_car": "Car",
+    "img": "https://i.ibb.co/jk4V27X/Frame-2.png"
+  }, {
+    "id": 3,
+    "select_car": "Bus",
+    "img": "https://i.ibb.co/7VZXpPS/Frame-1.png"
+  }, {
+    "id": 4,
+    "select_car": "Train",
+    "img": "https://i.ibb.co/S659M3j/Group.png"
+  }]
