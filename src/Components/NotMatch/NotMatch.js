@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './notMatch.css'
 const NotMatch = () => {
     return (
-        <div>
+        <div >
         <div class="error-template">
             <h1>
                 Oops!</h1>

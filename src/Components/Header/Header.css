@@ -1,25 +1,18 @@
 *{
     box-sizing: border-box;
 }
+
 .headerContainer{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    background-color: lightblue;
-    width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
+    border: 1px solid white;
 }
-.headerContainer ul li {
-    padding: 5px;
-    margin: 0 10px;
-    text-decoration: none;
-    list-style-type: none;
-    display: inline-block;
-}
-.header-link{
+.headerLink{
     font-size: 20px;
-    color: #000;
+    color: rgb(245, 245, 245);
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin: 0 10px;
+}
+.headerLink:hover{
+    color:rgb(255, 255, 255)
 }
