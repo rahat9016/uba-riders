@@ -80,11 +80,7 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
             }
         }
         const handleSubmit = (event) => {
-            if(loggedInUser.password != loggedInUser.confirmPassword){
-                const newUserInfo = {...userData}
-                newUserInfo.error = "Password did not match : Please try again..."
-                setUserData(newUserInfo)
-            }else{
+            
                 if (newUser && loggedInUser.email && loggedInUser.password) {
                     firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
                         .then(res => {
@@ -105,7 +101,6 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
                             setLoggedInUSer(newUserInfo)
                         });
                 }
-            }
             
             if (!newUser && loggedInUser.email && loggedInUser.password) {
                 firebase.auth().signInWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
