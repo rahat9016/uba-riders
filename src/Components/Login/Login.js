@@ -21,9 +21,7 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
         }
         const {
             register,
-            errors
         } = useForm();
-        const onSubmit = data => console.log(data);
         const [newUser, setNewUser] = useState(false)
         const [loggedInUser, setLoggedInUSer] = useState({
             isSignIn: false,
@@ -82,33 +80,37 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
             }
         }
         const handleSubmit = (event) => {
-            console.log(loggedInUser.email, loggedInUser.password)
-            if (newUser && loggedInUser.email && loggedInUser.password) {
-                firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
-                    .then(res => {
-                        const newUserInfo = {
-                            ...loggedInUser
-                        }
-                        newUserInfo.error = '';
-                        newUserInfo.success = true
-                        setLoggedInUSer(newUserInfo)
-                        updatedUserName(loggedInUser.name)
-                        
-                    }).catch(error => {
-                        const newUserInfo = {
-                            ...loggedInUser
-                        }
-                        newUserInfo.error = error.message
-                        newUserInfo.success = false
-                        setLoggedInUSer(newUserInfo)
-                    });
+            if(loggedInUser.password != loggedInUser.confirmPassword){
+                const newUserInfo = {...userData}
+                newUserInfo.error = "Password did not match : Please try again..."
+                setUserData(newUserInfo)
+            }else{
+                if (newUser && loggedInUser.email && loggedInUser.password) {
+                    firebase.auth().createUserWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
+                        .then(res => {
+                            const newUserInfo = {
+                                ...loggedInUser
+                            }
+                            newUserInfo.error = '';
+                            newUserInfo.success = true
+                            setLoggedInUSer(newUserInfo)
+                            updatedUserName(loggedInUser.name)
+                            
+                        }).catch(error => {
+                            const newUserInfo = {
+                                ...loggedInUser
+                            }
+                            newUserInfo.error = error.message
+                            newUserInfo.success = false
+                            setLoggedInUSer(newUserInfo)
+                        });
+                }
             }
+            
             if (!newUser && loggedInUser.email && loggedInUser.password) {
                 firebase.auth().signInWithEmailAndPassword(loggedInUser.email, loggedInUser.password)
                     .then(res => {
-                        const newUserInfo = {
-                            ...loggedInUser
-                        }
+                        const newUserInfo = {...loggedInUser}
                         newUserInfo.error = '';
                         newUserInfo.success = true
                         setLoggedInUSer(newUserInfo)
@@ -117,11 +119,10 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
                         setUserData(res.user)
                         history.replace(from);
                     }).catch(error => {
-                        const newUserInfo = {
-                            ...loggedInUser
-                        }
+                        const newUserInfo = {...loggedInUser}
                         newUserInfo.error = error.message
                         newUserInfo.success = false
+                        console.log(error.message)
                         setLoggedInUSer(newUserInfo)
                     });
             }
@@ -140,21 +141,17 @@ import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
     return (
     //<!Login Page>//
     <div className = "login-box" >
-        
-        
     <form className="form" onSubmit = {handleSubmit}>
     <h1>{ newUser ? 'Create an account' : 'Login'}</h1>
          { newUser && < input type = 'name' name = "name"onBlur ={handleChange} placeholder = "Name" ref = { register({ required: true })}/>}
 
         <input type = 'email' name = "email"onBlur = { handleChange}placeholder = "User Or Email"required ref= {register({required: true})}/> 
 
-        {errors.email && <span className = "error" > E - mail field is required </span>}
+        
 
         <input type = "password" name = "password" onBlur = {handleChange}placeholder = "Password"required ref = {register({required: true})}/> 
-        {errors.password && <span className = "error" > Password is required </span>}
-        {newUser && <input type = "password" name = "confirmPassword" placeholder = "Confirm Password"ref ={register({required: true})}/>}
-
-        {errors.confirmPassword && < span className = "error" > Confirm Password is required </span>} 
+        
+        {newUser && <input type = "password" name="confirmPassword" placeholder = "Confirm Password"ref ={register({required: true})}/>}
 
         <button type = "submit"className = "loginBtn">{newUser ? 'Sign Up' : 'Login'} </button> 
         <p style = {{color: "red", textAlign: 'center'}}>{loggedInUser.error}</p> 

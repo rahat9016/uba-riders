@@ -7,22 +7,22 @@ const Header = () => {
     return (
         <div className="headerContainer">
             
-            <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="container container-fluid">
-                <Link to="/home" class="navbar-brand justify-content-center" style={{ color: "#FF5833", textDecoration: "none" }}><h1><Link to="/home" style={{color:"black",textDecoration:"none"}}>Uba Riders</Link></h1></Link>
+            <nav className="navbar navbar-expand-lg navbar-light">
+            <div className="container container-fluid">
+                <Link to="/home" className="navbar-brand justify-content-center" style={{ color: "#FF5833", textDecoration: "none" }}><h1><Link to="/home" style={{color:"black",textDecoration:"none"}}>Uba Riders</Link></h1></Link>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav  headerNav">
-                        <Link to="/home" class="nav-link active" className="headerLink" >Home</Link>
-                        <Link to="/destination" class="nav-link active" className="headerLink" >Destination</Link>
-                        <Link to="/blog" class="nav-link active" className="headerLink" >Blog</Link>
-                        <Link to="/contact" class="nav-link active" className="headerLink" >Contact</Link>
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div className="navbar-nav  headerNav">
+                        <Link to="/home" className="nav-link active headerLink">Home</Link>
+                        <Link to="/destination" className="nav-link active headerLink">Destination</Link>
 
+                        <Link to="/blog" className="nav-link active headerLink">Blog</Link>
+                        <Link to="/contact" className="nav-link active headerLink">Contact</Link>
                         {
-                            userData.email ? <p style={{paddingTop:'8px'}}>{userData.displayName}</p>  :
+                            userData.email ? <Link style={{paddingTop:'8px'}}>{userData.displayName}</Link>  :
                                 <Link to="/login" className="btn" style={{ background: "orange", color: "#fff", padding: "12px 20px", borderRadius: "5px" }}>
                                     Log In
                                 </Link>

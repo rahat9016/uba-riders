@@ -14,7 +14,7 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 export const UserContext = createContext()
 function App() {
   const [userData,setUserData] = useState({})
-  console.log(userData.displayName)
+  
   return (
       <UserContext.Provider value={[userData,setUserData]}>
 
@@ -24,9 +24,7 @@ function App() {
             <Route path="/home">
                 <Home></Home>
             </Route>
-            <Route exact="exact" path="/">
-                <Home></Home>
-            </Route>
+            
             <PrivateRoute path="/destination/:id">
                 <Destination></Destination>
             </PrivateRoute>
@@ -35,6 +33,9 @@ function App() {
             </PrivateRoute>
             <Route path="/login">
                 <Login></Login>
+            </Route>
+            <Route exact path="/">
+                <Home></Home>
             </Route>
             <Route path="*">
                 <NotMatch></NotMatch>

@@ -42,18 +42,7 @@ const Destination = () => {
                     <h4><FontAwesomeIcon icon={faUserFriends} /> {rider.person}</h4>
                     <h4>${rider.amount}</h4>
                 </div>
-                {/* <div className="locationContainer">
-                    <img src={rider.img} alt=""/>
-                    <h5>{rider.select_car} </h5>
-                    <h4><FontAwesomeIcon icon={faUserFriends} /> 4</h4>
-                    <h4>$69</h4>
-                </div>
-                <div className="locationContainer">
-                    <img src={rider.img} alt=""/>
-                    <h5>{rider.select_car} </h5>
-                    <h4><FontAwesomeIcon icon={faUserFriends} /> 4</h4>
-                    <h4>$69</h4>
-                </div> */}
+               
             </div> :
                 <div className="addressFiled">
                     <form action="">
